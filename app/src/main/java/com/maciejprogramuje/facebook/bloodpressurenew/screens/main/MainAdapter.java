@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew;
+package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.maciejprogramuje.facebook.bloodpressurenew.R;
+
 import java.util.ArrayList;
 
-class MainAdapter extends RecyclerView.Adapter {
+public class MainAdapter extends RecyclerView.Adapter {
     private ArrayList<OneMeasurement> measurements = new ArrayList<>();
     private RecyclerView mainRecyclerView;
 

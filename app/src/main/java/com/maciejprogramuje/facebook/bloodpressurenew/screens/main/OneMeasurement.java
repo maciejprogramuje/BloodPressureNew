@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew;
+package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 public class OneMeasurement {
     private String date;

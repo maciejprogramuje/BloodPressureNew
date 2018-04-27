@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew;
+package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.maciejprogramuje.facebook.bloodpressurenew.R;
+import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
 
 import java.util.ArrayList;
 

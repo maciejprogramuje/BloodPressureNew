@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew;
+package com.maciejprogramuje.facebook.bloodpressurenew.screens.input;
 
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.NumberPicker;
+
+import com.maciejprogramuje.facebook.bloodpressurenew.R;
 
 import java.lang.reflect.Field;
 
@@ -36,11 +38,17 @@ public class InputDataActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        sysNumberPicker.setWrapSelectorWheel(true);
-        sysNumberPicker.setMinValue(0);
-        sysNumberPicker.setMaxValue(250);
-        sysNumberPicker.setValue(120);
-        setDividerColor(sysNumberPicker, R.color.colorPrimaryDark);
+        setNumberPickerLayout(sysNumberPicker);
+        setNumberPickerLayout(diaNumberPicker);
+        setNumberPickerLayout(pulseNumberPicker);
+    }
+
+    private void setNumberPickerLayout(NumberPicker numberPicker) {
+        numberPicker.setWrapSelectorWheel(true);
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(250);
+        numberPicker.setValue(100);
+        setDividerColor(numberPicker, R.color.colorPrimaryDark);
     }
 
     @OnClick(R.id.fab)
