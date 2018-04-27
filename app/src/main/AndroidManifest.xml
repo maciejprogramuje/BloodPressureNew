@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InputDataActivity"
+            android:name=".screens.input.InputDataActivity"
             android:label="@string/title_activity_input_data"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
