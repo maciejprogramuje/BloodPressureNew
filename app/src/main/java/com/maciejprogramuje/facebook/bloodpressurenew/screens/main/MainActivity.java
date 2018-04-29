@@ -1,6 +1,7 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
 import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
+import com.maciejprogramuje.facebook.bloodpressurenew.sql.DbAdapter;
 
 import java.util.ArrayList;
 
@@ -46,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mainRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        ArrayList<OneMeasurement> measurements = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            measurements.add(new OneMeasurement("2018-04-26", "" + i, "" + (20 - i), "60"));
+            OneMeasurement oneMeasurement = new OneMeasurement("2018-04-29", "" + i, "" + (20 - i), "60");
+            DbAdapter.addOneMeasurementToDb(this, oneMeasurement);
         }
 
-        mainRecyclerView.setAdapter(new MainAdapter(measurements, mainRecyclerView));
+        Cursor cursor = DbAdapter.getAllMeasurements(this);
+        MainAdapter mainAdapter = new MainAdapter(this, mainRecyclerView, cursor);
+        mainRecyclerView.setAdapter(mainAdapter);
     }
 
     @Override

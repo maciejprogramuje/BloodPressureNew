@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.OneMeasurement;
+
 public class DbAdapter implements BaseColumns {
     public class DbEntry implements BaseColumns {
         public static final String COLUMN_NAME_DATE = "date";
@@ -15,8 +17,8 @@ public class DbAdapter implements BaseColumns {
         public static final String COLUMN_NAME_PULSE = "pulse";
     }
 
-    static String sqlCreateTable(String tableName) {
-        return "CREATE TABLE " + tableName + " (" +
+    static String sqlCreateTable() {
+        return "CREATE TABLE " + DbHelper.TABLE_BLOOD_PRESSURE + " (" +
                 DbAdapter.DbEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DbAdapter.DbEntry.COLUMN_NAME_DATE + " TEXT NOT NULL," +
                 DbAdapter.DbEntry.COLUMN_NAME_SYS + " INTEGER," +
@@ -24,17 +26,17 @@ public class DbAdapter implements BaseColumns {
                 DbAdapter.DbEntry.COLUMN_NAME_PULSE + " INTEGER);";
     }
 
-    static String sqlDeleteAllTable(String tableName) {
-        return "DROP TABLE IF EXIST " + tableName;
+    static String sqlDeleteAllTable() {
+        return "DROP TABLE IF EXIST " + DbHelper.TABLE_BLOOD_PRESSURE;
     }
 
-    static public void deleteAllMesurementsFromDb(Context context, String tableName) {
-        openDbToWrite(context, new DbHelper(context)).delete(tableName, null, null);
+    static public void deleteAllMesurementsFromDb(Context context) {
+        openDbToWrite(context, new DbHelper(context)).delete(DbHelper.TABLE_BLOOD_PRESSURE, null, null);
     }
 
-    public static Cursor getAllMeasurements(Context context, String tableName) {
+    public static Cursor getAllMeasurements(Context context) {
         return openDbToRead(context, new DbHelper(context)).query(
-                tableName,
+                DbHelper.TABLE_BLOOD_PRESSURE,
                 null,
                 null,
                 null,
@@ -44,9 +46,9 @@ public class DbAdapter implements BaseColumns {
         );
     }
 
-    public static Cursor getOneMeasurementFromDb(Context context, long id, String tableName) {
+    public static Cursor getOneMeasurementFromDb(Context context, long id) {
         return openDbToRead(context, new DbHelper(context)).query(
-                tableName,
+                DbHelper.TABLE_BLOOD_PRESSURE,
                 null,
                 DbAdapter.DbEntry._ID + " = ?",
                 new String[]{id + ""},
@@ -56,18 +58,18 @@ public class DbAdapter implements BaseColumns {
         );
     }
 
-    static public void addOneMeasurementToDb(Context context, String tableName, String date, int sys, int dia, int pulse) {
+    static public void addOneMeasurementToDb(Context context, OneMeasurement oneMeasurement) {
         ContentValues cv = new ContentValues();
-        cv.put(DbEntry.COLUMN_NAME_DATE, date);
-        cv.put(DbEntry.COLUMN_NAME_SYS, sys);
-        cv.put(DbEntry.COLUMN_NAME_DIA, dia);
-        cv.put(DbEntry.COLUMN_NAME_PULSE, pulse);
+        cv.put(DbEntry.COLUMN_NAME_DATE, oneMeasurement.getDate());
+        cv.put(DbEntry.COLUMN_NAME_SYS, oneMeasurement.getSys());
+        cv.put(DbEntry.COLUMN_NAME_DIA, oneMeasurement.getDia());
+        cv.put(DbEntry.COLUMN_NAME_PULSE, oneMeasurement.getPulse());
 
-        openDbToWrite(context, new DbHelper(context)).insert(tableName, null, cv);
+        openDbToWrite(context, new DbHelper(context)).insert(DbHelper.TABLE_BLOOD_PRESSURE, null, cv);
     }
 
-    static public void deleteOneMeasurementFromDb(Context context, String tableName, long id) {
-        openDbToWrite(context, new DbHelper(context)).delete(tableName, DbEntry._ID + "=" + id, null);
+    static public void deleteOneMeasurementFromDb(Context context, long id) {
+        openDbToWrite(context, new DbHelper(context)).delete(DbHelper.TABLE_BLOOD_PRESSURE, DbEntry._ID + "=" + id, null);
     }
 
     private static SQLiteDatabase openDbToRead(Context context, SQLiteOpenHelper sqLiteOpenHelper) {

@@ -16,12 +16,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(DbAdapter.sqlCreateTable(TABLE_BLOOD_PRESSURE));
+        sqLiteDatabase.execSQL(DbAdapter.sqlCreateTable());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(DbAdapter.sqlDeleteAllTable(TABLE_BLOOD_PRESSURE));
+        sqLiteDatabase.execSQL(DbAdapter.sqlDeleteAllTable());
         onCreate(sqLiteDatabase);
     }
 }
