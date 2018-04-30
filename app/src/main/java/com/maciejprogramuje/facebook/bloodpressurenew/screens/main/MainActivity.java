@@ -46,11 +46,6 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mainRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        /*for (int i = 0; i < 5; i++) {
-            OneMeasurement oneMeasurement = new OneMeasurement("2018-04-29", i, (20 - i), 60);
-            DbAdapter.addOneMeasurementToDb(this, oneMeasurement);
-        }*/
-
         Cursor cursor = DbAdapter.getAllMeasurements(this);
         MainAdapter mainAdapter = new MainAdapter(this, mainRecyclerView, cursor);
         mainRecyclerView.setAdapter(mainAdapter);
