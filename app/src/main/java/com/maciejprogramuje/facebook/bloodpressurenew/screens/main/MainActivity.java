@@ -15,10 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
+import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
 import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
-import com.maciejprogramuje.facebook.bloodpressurenew.sql.DbAdapter;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mainRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i < 20; i++) {
-            OneMeasurement oneMeasurement = new OneMeasurement("2018-04-29", "" + i, "" + (20 - i), "60");
+        /*for (int i = 0; i < 5; i++) {
+            OneMeasurement oneMeasurement = new OneMeasurement("2018-04-29", i, (20 - i), 60);
             DbAdapter.addOneMeasurementToDb(this, oneMeasurement);
-        }
+        }*/
 
         Cursor cursor = DbAdapter.getAllMeasurements(this);
         MainAdapter mainAdapter = new MainAdapter(this, mainRecyclerView, cursor);

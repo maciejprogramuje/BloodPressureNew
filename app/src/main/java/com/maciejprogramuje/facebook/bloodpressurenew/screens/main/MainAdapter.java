@@ -1,8 +1,10 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
-import com.maciejprogramuje.facebook.bloodpressurenew.sql.DbAdapter;
-import com.maciejprogramuje.facebook.bloodpressurenew.sql.DbHelper;
-
-import java.util.ArrayList;
+import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbHelper;
 
 public class MainAdapter extends RecyclerView.Adapter {
     private Context context;
@@ -50,6 +50,8 @@ public class MainAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 long id = (long) view.getTag();
+                removeSpecyficMeasurement(id, view);
+                notifyDataSetChanged();
             }
         });
 
@@ -81,10 +83,23 @@ public class MainAdapter extends RecyclerView.Adapter {
         return cursor.getCount();
     }
 
-    void removeSpecyficMeasurement(long id) {
-        DbAdapter.deleteOneMeasurementFromDb(context, id);
-        swapCursor(DbAdapter.getAllMeasurements(context));
-        DbAdapter.closeDb(context, new DbHelper(context));
+    private void removeSpecyficMeasurement(final long id, final View view) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(view.getContext());
+        alertBuilder.setMessage(R.string.delete_this_line)
+                .setPositiveButton(view.getContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DbAdapter.deleteOneMeasurementFromDb(view.getContext(), id);
+                        swapCursor(DbAdapter.getAllMeasurements(view.getContext()));
+                        DbAdapter.closeDb(view.getContext(), new DbHelper(view.getContext()));
+                    }
+                })
+                .setNegativeButton(view.getContext().getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+        alertBuilder.create().show();
     }
 
     private void swapCursor(Cursor newCursor) {

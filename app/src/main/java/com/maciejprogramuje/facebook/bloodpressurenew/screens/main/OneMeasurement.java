@@ -2,11 +2,11 @@ package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
 public class OneMeasurement {
     private String date;
-    private String sys;
-    private String dia;
-    private String pulse;
+    private int sys;
+    private int dia;
+    private int pulse;
 
-    public OneMeasurement(String date, String sys, String dia, String pulse) {
+    public OneMeasurement(String date, int sys, int dia, int pulse) {
         this.date = date;
         this.sys = sys;
         this.dia = dia;
@@ -21,27 +21,27 @@ public class OneMeasurement {
         this.date = date;
     }
 
-    public String getSys() {
+    public int getSys() {
         return sys;
     }
 
-    public void setSys(String sys) {
+    public void setSys(int sys) {
         this.sys = sys;
     }
 
-    public String getDia() {
+    public int getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(int dia) {
         this.dia = dia;
     }
 
-    public String getPulse() {
+    public int getPulse() {
         return pulse;
     }
 
-    public void setPulse(String pulse) {
+    public void setPulse(int pulse) {
         this.pulse = pulse;
     }
 }

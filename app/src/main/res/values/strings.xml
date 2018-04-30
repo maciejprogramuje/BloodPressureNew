@@ -7,4 +7,7 @@
     <string name="dia">DIA:</string>
     <string name="pulse">pulse:</string>
     <string name="title_activity_input_data">InputDataActivity</string>
+    <string name="delete_this_line">Delete this measurement?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

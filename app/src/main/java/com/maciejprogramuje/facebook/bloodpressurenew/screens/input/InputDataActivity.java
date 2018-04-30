@@ -1,18 +1,26 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.input;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.NumberPicker;
 
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
+import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.MainActivity;
+import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.OneMeasurement;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +29,7 @@ import butterknife.OnClick;
 public class InputDataActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.fab)
+    @BindView(R.id.done_fab)
     FloatingActionButton fab;
     @BindView(R.id.sysNumberPicker)
     NumberPicker sysNumberPicker;
@@ -51,10 +59,20 @@ public class InputDataActivity extends AppCompatActivity {
         setDividerColor(numberPicker, R.color.colorPrimaryDark);
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.done_fab)
     public void onViewClicked(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+
+        String localTime = dateFormat.format(date);
+        int sys = sysNumberPicker.getValue();
+        int dia = diaNumberPicker.getValue();
+        int pulse = pulseNumberPicker.getValue();
+
+        OneMeasurement oneMeasurement = new OneMeasurement(localTime, sys, dia, pulse);
+        DbAdapter.addOneMeasurementToDb(this, oneMeasurement);
+
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void setDividerColor(NumberPicker picker, int color) {
