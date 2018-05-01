@@ -16,8 +16,6 @@ import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
 import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbHelper;
 
 public class MainAdapter extends RecyclerView.Adapter {
-    private Context context;
-    private RecyclerView mainRecyclerView;
     private Cursor cursor;
 
     private class MainViewHolder extends RecyclerView.ViewHolder {
@@ -35,9 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public MainAdapter(Context context, RecyclerView mainRecyclerView, Cursor cursor) {
-        this.context = context;
-        this.mainRecyclerView = mainRecyclerView;
+    public MainAdapter(Cursor cursor) {
         this.cursor = cursor;
     }
 

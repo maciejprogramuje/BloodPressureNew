@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         Cursor cursor = DbAdapter.getAllMeasurements(this);
-        MainAdapter mainAdapter = new MainAdapter(this, mainRecyclerView, cursor);
+        MainAdapter mainAdapter = new MainAdapter(cursor);
         mainRecyclerView.setAdapter(mainAdapter);
     }
 
