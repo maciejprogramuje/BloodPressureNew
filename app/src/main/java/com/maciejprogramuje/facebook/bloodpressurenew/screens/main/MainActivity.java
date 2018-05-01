@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
 import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
 import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
@@ -32,12 +35,18 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mainRecyclerView;
     @BindView(R.id.main_fab)
     FloatingActionButton mainFab;
+    @BindView(R.id.adView)
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        MobileAds.initialize(this, "ca-app-pub-9139309714448232~1258567664");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         toolbar.setTitle(getString(R.string.blood_pressure_diary));
         setSupportActionBar(toolbar);
