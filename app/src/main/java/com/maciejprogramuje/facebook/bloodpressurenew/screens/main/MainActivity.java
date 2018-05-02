@@ -1,9 +1,11 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
 import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbHelper;
 import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
 
 import butterknife.BindView;
@@ -26,7 +29,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.mainTextView)
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton mainFab;
     @BindView(R.id.adView)
     AdView adView;
+    private MainAdapter mainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         Cursor cursor = DbAdapter.getAllMeasurements(this);
-        MainAdapter mainAdapter = new MainAdapter(cursor);
+        mainAdapter = new MainAdapter(cursor);
         mainRecyclerView.setAdapter(mainAdapter);
     }
 
@@ -69,16 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id == R.id.action_delete_all) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+            mainAdapter.removeAllMeasurements(MainActivity.this);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

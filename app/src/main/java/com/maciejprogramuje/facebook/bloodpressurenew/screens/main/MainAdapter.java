@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,6 @@ public class MainAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 long id = (long) view.getTag();
                 removeSpecyficMeasurement(id, view);
-                notifyDataSetChanged();
             }
         });
 
@@ -96,6 +96,28 @@ public class MainAdapter extends RecyclerView.Adapter {
                     }
                 });
         alertBuilder.create().show();
+        notifyDataSetChanged();
+    }
+
+    public void removeAllMeasurements(final Context context) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+        alertBuilder.setMessage(R.string.delete_this_line)
+                .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DbAdapter.deleteAllMesurementsFromDb(context);
+                        swapCursor(DbAdapter.getAllMeasurements(context));
+                        DbAdapter.closeDb(context, new DbHelper(context));
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton(context.getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+        alertBuilder.create().show();
+        notifyDataSetChanged();
     }
 
     private void swapCursor(Cursor newCursor) {
