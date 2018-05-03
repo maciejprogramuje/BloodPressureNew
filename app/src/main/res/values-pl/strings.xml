@@ -1,0 +1,15 @@
+<resources>
+    <string name="action_settings">Ustawienia</string>
+    <string name="measurement_results">Wyniki pomiaru</string>
+    <string name="blood_pressure_diary">"Dzienniczek ciśnienia krwi"</string>
+    <string name="sys">SYS</string>
+    <string name="dia">DIA</string>
+    <string name="pulse">puls</string>
+    <string name="delete_this_line">Skasować ten pomiar?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="delete">Skasuj</string>
+    <string name="enter_mesurement">Wprowadź pomiar</string>
+    <string name="share">Udostępnij</string>
+    <string name="date">data</string>
+</resources>

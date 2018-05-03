@@ -1,5 +1,6 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -74,8 +75,39 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_delete_all) {
-
             mainAdapter.removeAllMeasurements(MainActivity.this);
+            return true;
+        } else if (id == R.id.action_share) {
+            Cursor cursor = DbAdapter.getAllMeasurements(this);
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(getString(R.string.blood_pressure_diary))
+                    .append(getString(R.string.end_line)).append(getString(R.string.end_line))
+                    .append(getString(R.string.date)).append(getString(R.string.pause))
+                    .append(getString(R.string.sys)).append(getString(R.string.pause))
+                    .append(getString(R.string.dia)).append(getString(R.string.pause))
+                    .append(getString(R.string.pulse)).append(getString(R.string.end_line));
+
+            while (cursor.moveToNext()) {
+                String date = cursor.getString(cursor.getColumnIndex(DbAdapter.DbEntry.COLUMN_NAME_DATE));
+                String sys = cursor.getString(cursor.getColumnIndex(DbAdapter.DbEntry.COLUMN_NAME_SYS));
+                String dia = cursor.getString(cursor.getColumnIndex(DbAdapter.DbEntry.COLUMN_NAME_DIA));
+                String pulse = cursor.getString(cursor.getColumnIndex(DbAdapter.DbEntry.COLUMN_NAME_PULSE));
+
+                stringBuilder.append(date).append(getString(R.string.pause))
+                        .append(sys).append(getString(R.string.pause))
+                        .append(dia).append(getString(R.string.pause))
+                        .append(pulse).append(getString(R.string.end_line));
+            }
+
+            Log.w("UWAGA", stringBuilder.toString());
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TITLE, getString(R.string.blood_pressure_diary));
+            intent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
+            startActivity(intent);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
