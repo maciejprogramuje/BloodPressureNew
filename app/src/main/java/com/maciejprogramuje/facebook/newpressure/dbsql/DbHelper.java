@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew.dbsql;
+package com.maciejprogramuje.facebook.newpressure.dbsql;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

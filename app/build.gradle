@@ -7,7 +7,7 @@ android {
     }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.maciejprogramuje.facebook.bloodpressurenew"
+        applicationId 'commaciejprogramuje.facebook.newpressure'
         minSdkVersion 22
         targetSdkVersion 27
         versionCode 3
@@ -24,6 +24,8 @@ android {
         lintOptions {
             checkReleaseBuilds false
         }
+    }
+    productFlavors {
     }
 }
 

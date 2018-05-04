@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.maciejprogramuje.facebook.bloodpressurenew">
+    package="com.maciejprogramuje.facebook.newpressure">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".screens.main.MainActivity"
+            android:name="com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity"
             android:label="@string/blood_pressure_diary"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -23,10 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.input.InputDataActivity"
+            android:name="com.maciejprogramuje.facebook.newpressure.screens.input.InputDataActivity"
             android:label="@string/enter_mesurement"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName="com.maciejprogramuje.facebook.bloodpressurenew.screens.main.MainActivity"/>
+            android:parentActivityName="com.maciejprogramuje.facebook.newpressure.com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity"/>
     </application>
 
 </manifest>

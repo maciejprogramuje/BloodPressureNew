@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew.screens.input;
+package com.maciejprogramuje.facebook.newpressure.screens.input;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,10 +12,10 @@ import android.widget.NumberPicker;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.maciejprogramuje.facebook.bloodpressurenew.R;
-import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
-import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.MainActivity;
-import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.OneMeasurement;
+import com.maciejprogramuje.facebook.newpressure.R;
+import com.maciejprogramuje.facebook.newpressure.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity;
+import com.maciejprogramuje.facebook.newpressure.screens.main.OneMeasurement;
 
 import java.lang.reflect.Field;
 import java.text.DateFormat;

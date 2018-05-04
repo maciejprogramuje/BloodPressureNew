@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
+package com.maciejprogramuje.facebook.newpressure.screens.main;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.maciejprogramuje.facebook.bloodpressurenew.R;
-import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
-import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbHelper;
+import com.maciejprogramuje.facebook.newpressure.R;
+import com.maciejprogramuje.facebook.newpressure.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.newpressure.dbsql.DbHelper;
 
 public class MainAdapter extends RecyclerView.Adapter {
     private Cursor cursor;

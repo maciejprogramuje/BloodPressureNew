@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
+package com.maciejprogramuje.facebook.newpressure.screens.main;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,9 +18,9 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.maciejprogramuje.facebook.bloodpressurenew.R;
-import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
-import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
+import com.maciejprogramuje.facebook.newpressure.R;
+import com.maciejprogramuje.facebook.newpressure.dbsql.DbAdapter;
+import com.maciejprogramuje.facebook.newpressure.screens.input.InputDataActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

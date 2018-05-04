@@ -1,4 +1,4 @@
-package com.maciejprogramuje.facebook.bloodpressurenew.dbsql;
+package com.maciejprogramuje.facebook.newpressure.dbsql;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import com.maciejprogramuje.facebook.bloodpressurenew.screens.main.OneMeasurement;
+import com.maciejprogramuje.facebook.newpressure.screens.main.OneMeasurement;
 
 public class DbAdapter implements BaseColumns {
     public class DbEntry implements BaseColumns {
