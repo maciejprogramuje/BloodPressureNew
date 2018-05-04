@@ -1,12 +1,9 @@
 package com.maciejprogramuje.facebook.bloodpressurenew.screens.main;
 
-import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +20,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.maciejprogramuje.facebook.bloodpressurenew.R;
 import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbAdapter;
-import com.maciejprogramuje.facebook.bloodpressurenew.dbsql.DbHelper;
 import com.maciejprogramuje.facebook.bloodpressurenew.screens.input.InputDataActivity;
 
 import butterknife.BindView;
@@ -49,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        MobileAds.initialize(this, "ca-app-pub-9139309714448232~1258567664");
+        MobileAds.initialize(this, "ca-app-pub-9139309714448232~5571873263");
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
