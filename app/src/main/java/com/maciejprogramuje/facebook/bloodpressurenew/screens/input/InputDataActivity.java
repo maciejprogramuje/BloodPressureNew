@@ -5,10 +5,8 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.NumberPicker;
 
@@ -84,7 +82,7 @@ public class InputDataActivity extends AppCompatActivity {
         numberPicker.setWrapSelectorWheel(true);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(250);
-        setDividerColor(numberPicker, R.color.colorPrimaryDark);
+        setDividerColor(numberPicker, R.color.colorPrimary);
     }
 
     @OnClick(R.id.done_fab)

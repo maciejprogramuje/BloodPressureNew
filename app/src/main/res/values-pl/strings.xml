@@ -12,4 +12,6 @@
     <string name="enter_mesurement">Wprowadź pomiar</string>
     <string name="share">Udostępnij</string>
     <string name="date">data</string>
+    <string name="delete_all">Usuń wszystko</string>
+    <string name="delete_all_lines">Skasować wszystkie pomiary?</string>
 </resources>

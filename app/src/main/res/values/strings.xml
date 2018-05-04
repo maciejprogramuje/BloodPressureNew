@@ -13,5 +13,7 @@
     <string name="share">Share</string>
     <string name="end_line">\n</string>
     <string name="date">date</string>
-    <string name="pause">,</string>
+    <string name="pause">,\u0020</string>
+    <string name="delete_all">Delete all</string>
+    <string name="delete_all_lines">Delete all measurements?</string>
 </resources>
