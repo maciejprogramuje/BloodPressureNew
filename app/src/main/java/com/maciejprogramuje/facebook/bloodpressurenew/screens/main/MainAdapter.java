@@ -24,7 +24,7 @@ public class MainAdapter extends RecyclerView.Adapter {
         public TextView diaTextView;
         public TextView pulseTextView;
 
-        public MainViewHolder(View itemView) {
+        MainViewHolder(View itemView) {
             super(itemView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             sysTextView = itemView.findViewById(R.id.sysTextView);
@@ -33,7 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public MainAdapter(Cursor cursor) {
+    MainAdapter(Cursor cursor) {
         this.cursor = cursor;
     }
 

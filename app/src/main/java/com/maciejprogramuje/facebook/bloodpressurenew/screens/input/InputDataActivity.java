@@ -82,7 +82,7 @@ public class InputDataActivity extends AppCompatActivity {
         numberPicker.setWrapSelectorWheel(true);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(250);
-        setDividerColor(numberPicker, R.color.colorPrimary);
+        setDividerColor(numberPicker, R.color.primaryColor);
     }
 
     @OnClick(R.id.done_fab)
