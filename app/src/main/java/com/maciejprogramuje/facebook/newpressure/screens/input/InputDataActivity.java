@@ -2,6 +2,7 @@ package com.maciejprogramuje.facebook.newpressure.screens.input;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +18,6 @@ import com.maciejprogramuje.facebook.newpressure.dbsql.DbAdapter;
 import com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity;
 import com.maciejprogramuje.facebook.newpressure.screens.main.OneMeasurement;
 
-import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -82,7 +82,7 @@ public class InputDataActivity extends AppCompatActivity {
         numberPicker.setWrapSelectorWheel(true);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(250);
-        setDividerColor(numberPicker, R.color.dividerColor);
+        setDividerColor(numberPicker, Color.WHITE);
     }
 
     @OnClick(R.id.done_fab)
@@ -102,14 +102,14 @@ public class InputDataActivity extends AppCompatActivity {
     }
 
     private void setDividerColor(NumberPicker picker, int color) {
-        Field[] pickerFields = NumberPicker.class.getDeclaredFields();
-        for (Field pf : pickerFields) {
+        java.lang.reflect.Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+        for (java.lang.reflect.Field pf : pickerFields) {
             if (pf.getName().equals("mSelectionDivider")) {
                 pf.setAccessible(true);
                 try {
                     ColorDrawable colorDrawable = new ColorDrawable(color);
                     pf.set(picker, colorDrawable);
-                } catch (IllegalArgumentException | IllegalAccessException | Resources.NotFoundException e) {
+                } catch (IllegalArgumentException | Resources.NotFoundException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
                 break;

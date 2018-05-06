@@ -26,7 +26,7 @@
             android:name="com.maciejprogramuje.facebook.newpressure.screens.input.InputDataActivity"
             android:label="@string/enter_mesurement"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName="com.maciejprogramuje.facebook.newpressure.com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity"/>
+            android:parentActivityName="com.maciejprogramuje.facebook.newpressure.screens.main.MainActivity"/>
     </application>
 
 </manifest>
